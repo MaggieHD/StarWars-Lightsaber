@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>CSS only Lightsaber</title>
+    <script type="text/javascript" src="./app/js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./app/css/style.css">
+</head>
+
+<body>
+    <label for="greenLight">Green</label>
+    <input type="radio" id="greenLight" name="color" checked>
+    <label for="blueLight">Blue</label>
+    <input type="radio" id="blueLight" name="color" checked>
+    <label for="redLight">Red</label>
+    <input type="radio" id="redLight" name="color" checked>
+    <label for="yellowLight">Yellow</label>
+    <input type="radio" id="yellowLight" name="color" checked>
+    <label for="purpleLight">Purple</label>
+    <input type="radio" id="purpleLight" name="color" checked>
+    <label for="darksaber">Darksaber</label>
+    <input type="radio" id="darksaber" name="color" checked>
+
+    <div class="lightsaber">
+        <input type="checkbox" id="on-off">
+        <div class="blade"></div>
+        <label class="hilt" for="on-off"></label>
+        <audio id="saberOn"><source src="./app/resources/fx4.mp3" type="audio/mp3"></audio>
+        <audio id="saberOff"><source src="./app/resources/fx5.mp3" type="audio/mp3"></audio>
+    </div>
+    <script type="text/javascript">
+        console.log("Hello");
+        let toggle = true;
+        $("#on-off").click(() => {
+            if (toggle) {
+                $("#saberOn")[0].play();
+            } else {
+                $("#saberOff")[0].play();
+            }
+            toggle = !toggle;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+:root {
+    --blade-hue: 120;
+    --blade-lightness: 50%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background: #222;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 100px 50px 1fr;
+    min-height: 100vh;
+    place-items: center;
+    font-family: "Source Sans Pro", sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+
+/* The color pickers */
+
+[name="color"] {
+    grid-row: 1 / 2;
+    align-self: end;
+    margin: 0.5em;
+}
+
+label:not(.hilt) {
+    color: white;
+    font-weight: bold;
+    align-self: start;
+}
+
+
+/* Lightsaber styling */
+
+.lightsaber {
+    margin-top: 35vh;
+    grid-column: 1/-1;
+    position: relative;
+}
+
+#on-off {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.hilt {
+    cursor: pointer;
+    display: block;
+    width: 0.75rem;
+    height: 7rem;
+    background-color: red;
+    border-radius: 0 0 4px 4px;
+    background-image: linear-gradient( silver 0 10px, hsl(260 11% 52%) 0 14px, silver 0 16px, black 0 17px, silver 0 19px, black 0 20px, silver 0 28px, black 0 31px, silver 0 34px, black 0 37px, silver 0 40px, black 0 70px, silver 0 73px, black 0 76px, silver 0 79px, black 0 82px, silver 0 90px, black 0 91px, silver 0 100%);
+}
+
+.blade {
+    position: absolute;
+    background: white;
+    height: 250%;
+    width: 100%;
+    bottom: 100%;
+    border-radius: 100vw 100vw 0 0;
+    box-shadow: inset 0 0 4px hsl(var(--blade-hue) 100% 50%/.1), 0 0 1em hsl(var(--blade-hue) 100% 50%/.8), 0 0 1.5em hsl(var(--blade-hue) 100% 50%/.7), 0 0 2em hsl(var(--blade-hue) 100% 50%/.5), 0 0 3em hsl(var(--blade-hue) 100% 50%/.3), 0 0 5em hsl(var(--blade-hue) 100% 50%/.2);
+}
+
+.blade::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(var(--blade-hue) 100% 50%);
+    border-radius: inherit;
+    filter: blur(0.5em);
+    opacity: 1;
+    animation: pulse linear 5s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .5
+    }
+}
